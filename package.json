@@ -13,7 +13,8 @@
     "multer-storage-cloudinary": "^4.0.0"
   },
   "scripts": {
-    "start": "ts-node index.ts",
+    "build": "tsc",
+    "start": "node build/index.js",
     "dev": "nodemon index.ts",
     "migrate": "npx prisma migrate dev",
     "generate": "npx prisma generate"
