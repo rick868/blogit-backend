@@ -4,10 +4,10 @@ import { hashPassword, generateToken } from '../../utils/auth';
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { firstName, lastName, userName, emailAddress, password } = req.body;
+    const { firstName, lastName, username, email, password } = req.body;
     
     const existingUser = await prisma.user.findFirst({
-      where: { OR: [{ emailAddress }, { userName }] }
+      where: { OR: [{ emailAddress: email }, { userName: username }] }
     });
     
     if (existingUser) {
@@ -17,7 +17,7 @@ export const register = async (req: Request, res: Response) => {
     const hashedPassword = await hashPassword(password);
     
     const user = await prisma.user.create({
-      data: { firstName, lastName, userName, emailAddress, password: hashedPassword }
+      data: { firstName, lastName, userName: username, emailAddress: email, password: hashedPassword }
     });
     
     const token = generateToken(user.id);
