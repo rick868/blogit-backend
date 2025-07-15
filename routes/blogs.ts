@@ -11,8 +11,8 @@ const router = Router();
 router.get('/', getAllBlogs);
 router.get('/user', authenticate, getUserBlogs);
 router.post('/', authenticate, createBlog);
-router.get('/:blogId', getBlog);
-router.patch('/:blogId', authenticate, updateBlog);
-router.delete('/:blogId', authenticate, deleteBlog);
+router.get('/:postId', getBlog);
+router.patch('/:postId', authenticate, updateBlog);
+router.delete('/:postId', authenticate, deleteBlog);
 
 export default router;
