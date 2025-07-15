@@ -40,7 +40,6 @@ export const updateUser = async (req: AuthenticatedRequest, res: Response) => {
         lastName: true,
         userName: true,
         emailAddress: true,
-        profileImage: true
       }
     });
 
