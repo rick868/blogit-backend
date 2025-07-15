@@ -7,7 +7,7 @@ interface AuthenticatedRequest extends Request {
   userId?: string;
 }
 
-export const updateUser = async (req: AuthenticatedRequest, res: Response) => {
+export const updateUserController = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.userId;
     const { firstName, lastName, userName, emailAddress, profileImage } = req.body;
