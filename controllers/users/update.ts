@@ -7,7 +7,7 @@ interface AuthenticatedRequest extends Request {
   userId?: string;
 }
 
-export const updateUserController = async (req: AuthenticatedRequest, res: Response) => {
+export const updateUser = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.userId;
     const { firstName, lastName, userName, emailAddress, profileImage } = req.body;
@@ -33,7 +33,7 @@ export const updateUserController = async (req: AuthenticatedRequest, res: Respo
 
     const updatedUser = await prisma.user.update({
       where: { id: userId },
-      data: { firstName, lastName, userName, emailAddress, profileImage: profileImageUrl },
+      data: { firstName, lastName, userName, emailAddress, profileImage: profileImageUrl } as any,
       select: {
         id: true,
         firstName: true,
