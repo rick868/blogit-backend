@@ -2,7 +2,11 @@ import { Request, Response, NextFunction } from 'express';
 import { verifyToken } from '../utils/auth';
 import prisma from '../prisma/client';
 
-export const authenticate = async (req: Request, res: Response, next: NextFunction) => {
+interface AuthenticatedRequest extends Request {
+  userId?: string;
+}
+
+export const authenticate = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
   
   if (!token) {
