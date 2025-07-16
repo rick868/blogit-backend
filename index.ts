@@ -6,6 +6,7 @@ import config from './config';
 import authRouter from './routes/auth';
 import blogRouter from './routes/blogs';
 import userRouter from './routes/users';
+import uploadRouter from './routes/upload';
 import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(morgan('dev'));
 app.use('/api/auth', authRouter);
 app.use('/api/blogs', blogRouter);
 app.use('/api/user', userRouter);
+app.use('/api/upload', uploadRouter);
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK' });
