@@ -5,7 +5,7 @@ export const getAllBlogs = async (req: Request, res: Response) => {
   try {
     const blogs = await prisma.post.findMany({
       where: { isDeleted: false },
-      include: { user: true }
+      include: { users: true }
     });
     res.json(blogs);
   } catch (error) {
@@ -19,7 +19,7 @@ export const getUserBlogs = async (req: Request, res: Response) => {
     const userId = (req as any).userId;
     const blogs = await prisma.post.findMany({
       where: { userId, isDeleted: false },
-      include: { user: true }
+      include: { users: true }
     });
     res.json(blogs);
   } catch (error) {

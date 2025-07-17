@@ -31,7 +31,7 @@ export const updateBlog = async (req: Request, res: Response) => {
         content: content || blog.content,
         featuredImage: featuredImage || blog.featuredImage
       },
-      include: { user: true }
+      include: { users: true }
     });
     
     res.json(updatedBlog);
