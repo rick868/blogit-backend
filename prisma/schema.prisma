@@ -21,7 +21,7 @@ model User{
   emailAddress String @unique
   password String
   profileImage String? 
-  post Post[]
+  posts Post[]
 
   @@map("users")
 }
@@ -36,7 +36,7 @@ model Post{
   updatedAt DateTime
   isDeleted Boolean @default(false)
   userId String
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  users User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("posts")
 }
