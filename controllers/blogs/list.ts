@@ -5,7 +5,7 @@ export const getAllBlogs = async (req: Request, res: Response) => {
   try {
     const blogs = await prisma.post.findMany({
       where: { isDeleted: false },
-      include: { users: true }
+      include: { user: true }
     });
     res.json(blogs);
   } catch (error) {
