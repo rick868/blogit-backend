@@ -19,7 +19,7 @@ export const getUserBlogs = async (req: Request, res: Response) => {
     const userId = (req as any).userId;
     const blogs = await prisma.post.findMany({
       where: { userId, isDeleted: false },
-      include: { users: true }
+      include: { user: true }
     });
     res.json(blogs);
   } catch (error) {

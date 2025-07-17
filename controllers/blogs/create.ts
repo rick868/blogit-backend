@@ -20,7 +20,7 @@ export const createBlog = async (req: Request, res: Response) => {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      include: { users: true }
+      include: { user: true }
     });
     
     res.status(201).json(blog);

@@ -11,7 +11,7 @@ export const getBlog = async (req: Request, res: Response) => {
         isDeleted: false
       },
       include: {
-        users: {
+        user: {
           select: {
             id: true,
             firstName: true,
